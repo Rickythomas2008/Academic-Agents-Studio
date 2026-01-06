@@ -1,10 +1,10 @@
 import os; os.environ['no_proxy'] = '*' # 避免代理网络产生意外污染
 
 help_menu_description = \
-"""Github源代码开源和更新[地址🚀](https://github.com/AcademicAgentsStudio),
-感谢热情的[开发者们❤️](https://github.com/AcademicAgentsStudio/graphs/contributors).
-</br></br>常见问题请查阅[项目Wiki](https://github.com/AcademicAgentsStudio/wiki),
-如遇到Bug请前往[Bug反馈](https://github.com/AcademicAgentsStudio/issues).
+"""Github源代码开源和更新[地址🚀](https://github.com/binary-husky/gpt_academic),
+感谢热情的[开发者们❤️](https://github.com/binary-husky/gpt_academic/graphs/contributors).
+</br></br>常见问题请查阅[项目Wiki](https://github.com/binary-husky/gpt_academic/wiki),
+如遇到Bug请前往[Bug反馈](https://github.com/binary-husky/gpt_academic/issues).
 </br></br>普通对话使用说明: 1. 输入问题; 2. 点击提交
 </br></br>基础功能区使用说明: 1. 输入文本; 2. 点击任意基础功能区按钮
 </br></br>函数插件区使用说明: 1. 输入路径/问题, 或者上传文件; 2. 点击任意函数插件区按钮
@@ -34,13 +34,11 @@ def encode_plugin_info(k, plugin)->str:
 
 def main():
     import gradio as gr
-    # if gr.__version__ not in ['1.0.0']:
-    #     raise ModuleNotFoundError("使用项目内置Gradio获取最优体验! 请运行 `pip install -r requirements.txt` 指令安装内置Gradio及其他依赖, 详情信息见requirements.txt.")
+    if gr.__version__ not in ['3.32.15']:
+        raise ModuleNotFoundError("使用项目内置Gradio获取最优体验! 请运行 `pip install -r requirements.txt` 指令安装内置Gradio及其他依赖, 详情信息见requirements.txt.")
 
     # 一些基础工具
     from toolbox import format_io, find_free_port, on_file_uploaded, on_report_generated, get_conf, ArgsGeneralWrapper, DummyWith
-
-    # MCP相关模块
 
     # 对话、日志记录
     enable_log(get_conf("PATH_LOGGING"))
@@ -59,34 +57,11 @@ def main():
     # 如果WEB_PORT是-1, 则随机选取WEB端口
     PORT = find_free_port() if WEB_PORT <= 0 else WEB_PORT
     from check_proxy import get_current_version
-    from themes.theme import adjust_theme, advanced_css, js_code_clear, js_code_show_or_hide
+    from themes.theme import adjust_theme, advanced_css, theme_declaration, js_code_clear, js_code_show_or_hide
     from themes.theme import js_code_for_toggle_darkmode
-    from themes.theme import load_dynamic_theme, assign_user_uuid
-    title_html = f"""
-        <div class="header-container">
-            <div class="tech-grid-bg"></div>
-            <div class="header-content">
-                <h1 class="main-title">
-                    <div class="title-glow"></div>
-                    <span class="title-icon"><img src="https://s2.loli.net/2025/09/21/vto5bOdEVZJLWkj.png" width="100" /></span>
-                    <span class="title-text">
-                        <span class="text-gradient">Academic Agents</span>
-                        <span class="text-accent">Studio</span>
-                    </span>
-                    <span class="title-version">
-                        <div class="version-chip">⭐开源版(v1.0)</div>
-                    </span>
-                </h1>
-                <div class="subtitle-container">
-                    <div class="subtitle-line"></div>
-                    <p class="subtitle">学术智能体应用服务平台 - 智能研究助手</p>
-                    <div class="subtitle-line"></div>
-                </div>
-                <p>-⭐<a href="https://github.com/AcademicAgentsStudio/Academic-Agents-Studio">开源版</a>支持已完整研发稳定功能特性（欢迎加入交流群(QQ群 1030022463 | 微信群 搜索AIOAGI)交流反馈任何问题）</p>
-                <p>-🙂<a href="https://agents.aiearth.vip">⭐内测版</a>免费支持GPT mini、Gemini flash、Claude haiku等系列模型 - 🚀更多高级模型请访问<a href="https://aioagi.tech">AIOAGI.Tech</a>平台获取API Key，输入区输入后覆盖设置使用</p>
-            </div>
-        </div>
-        """
+    from themes.theme import load_dynamic_theme, to_cookie_str, from_cookie_str, assign_user_uuid
+    title_html = f"<h1 align=\"center\">GPT 学术优化 {get_current_version()}</h1>{theme_declaration}"
+
 
     # 一些普通功能模块
     from core_functional import get_core_functions
@@ -121,7 +96,7 @@ def main():
     customize_btns = {}
     predefined_btns = {}
     from shared_utils.cookie_manager import make_cookie_cache, make_history_cache
-    with gr.Blocks(title="Academic Agents 学术智能体应用服务平台", theme=set_theme, analytics_enabled=False, css=advanced_css) as app_block:
+    with gr.Blocks(title="GPT 学术优化", theme=set_theme, analytics_enabled=False, css=advanced_css) as app_block:
         gr.HTML(title_html)
         secret_css = gr.Textbox(visible=False, elem_id="secret_css")
         register_advanced_plugin_init_arr = ""
@@ -135,13 +110,7 @@ def main():
             with gr_L2(scale=1, elem_id="gpt-panel"):
                 with gr.Accordion("输入区", open=True, elem_id="input-panel") as area_input_primary:
                     with gr.Row():
-                        txt = gr.Textbox(
-                            show_label=False,
-                            placeholder="🚀 在此输入您的问题或指令...\n\n💡 提示：\n• 按 Enter 换行&按 Shift+Enter 提交\n• 支持拖拽文件到此处\n• 仅支持输入AIOAGI.Tech平台API_KEY覆盖设置\n• 免费支持GPT mini系列模型使用（QQ交流群:1030022463 | 微信交流群-搜索：AIOAGI）",
-                            elem_id='user_input_main',
-                            lines=3,
-                            max_lines=10
-                        ).style(container=False)
+                        txt = gr.Textbox(show_label=False, placeholder="Input question here.", elem_id='user_input_main').style(container=False)
                     with gr.Row(elem_id="gpt-submit-row"):
                         multiplex_submit_btn = gr.Button("提交", elem_id="elem_submit_visible", variant="primary")
                         multiplex_sel = gr.Dropdown(
@@ -153,22 +122,13 @@ def main():
                         resetBtn = gr.Button("重置", elem_id="elem_reset", variant="secondary"); resetBtn.style(size="sm")
                         stopBtn = gr.Button("停止", elem_id="elem_stop", variant="secondary"); stopBtn.style(size="sm")
                         clearBtn = gr.Button("清除", elem_id="elem_clear", variant="secondary", visible=False); clearBtn.style(size="sm")
-                    # MCP智能体按钮区 - 放在输入区内
-                    with gr.Row(elem_id="mcp-button-row"):
-                        mcp_toggle_btn = gr.Button(
-                            "🤖 学术智能体（Academic Agents）",
-                            elem_id="mcp_toggle_btn",
-                            variant="primary",
-                            scale=3,
-                            info_str="启用/禁用学术智能体（Academic Agents）功能，支持外部工具调用"
-                        )
                     if ENABLE_AUDIO:
                         with gr.Row():
                             audio_mic = gr.Audio(source="microphone", type="numpy", elem_id="elem_audio", streaming=True, show_label=False).style(container=False)
                     with gr.Row():
-                        status = gr.Markdown("✨ **智能助手就绪** | 💡 使用技巧：支持文件拖拽、多行输入、快捷键操作 | 🔧 可随时切换模型和插件", elem_id="state-panel")
+                        status = gr.Markdown(f"Tip: 按Enter提交, 按Shift+Enter换行。支持将文件直接粘贴到输入区。", elem_id="state-panel")
 
-                with gr.Accordion("基础功能区", open=False, elem_id="basic-panel") as area_basic_fn:
+                with gr.Accordion("基础功能区", open=True, elem_id="basic-panel") as area_basic_fn:
                     with gr.Row():
                         for k in range(NUM_CUSTOM_BASIC_BTN):
                             customize_btn = gr.Button("自定义按钮" + str(k+1), visible=False, variant="secondary", info_str=f'基础功能区: 自定义按钮')
@@ -180,7 +140,7 @@ def main():
                             functional[k]["Button"] = gr.Button(k, variant=variant, info_str=f'基础功能区: {k}')
                             functional[k]["Button"].style(size="sm")
                             predefined_btns.update({k: functional[k]["Button"]})
-                with gr.Accordion("函数插件区", open=False, elem_id="plugin-panel") as area_crazy_fn:
+                with gr.Accordion("函数插件区", open=True, elem_id="plugin-panel") as area_crazy_fn:
                     with gr.Row():
                         gr.Markdown("<small>插件可读取“输入区”文本/路径作为参数（上传文件自动修正路径）</small>")
                     with gr.Row(elem_id="input-plugin-group"):
@@ -257,15 +217,6 @@ def main():
         input_combo_order = ["cookies", "max_length_sl", "md_dropdown", "txt", "txt2", "top_p", "temperature", "chatbot", "history", "system_prompt", "plugin_advanced_arg"]
         output_combo = [cookies, chatbot, history, status]
         predict_args = dict(fn=ArgsGeneralWrapper(predict), inputs=[*input_combo, gr.State(True)], outputs=output_combo)
-
-        # MCP按钮点击事件
-        mcp_click_handle = mcp_toggle_btn.click(
-            fn=ArgsGeneralWrapper(predict),
-            inputs=[*input_combo, gr.State(True), gr.State("学术智能体（Academic Agents）")],
-            outputs=output_combo
-        )
-
-        cancel_handles.append(mcp_click_handle)
 
         # 提交按钮、重置按钮
         multiplex_submit_btn.click(

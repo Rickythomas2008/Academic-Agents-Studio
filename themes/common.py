@@ -54,7 +54,6 @@ def get_common_html_javascript_code():
         "themes/tts.js",
         "themes/init.js",
         "themes/welcome.js",
-        "themes/mcp_button.js",  # 新增MCP按钮管理JavaScript
     ]
 
     if ADD_WAIFU: # 添加Live2D

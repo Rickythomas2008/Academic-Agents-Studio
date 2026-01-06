@@ -1,181 +1,3 @@
-.header-container {
-    position: relative;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-    border: 1px solid rgba(64, 224, 255, 0.2);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-.tech-grid-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        linear-gradient(rgba(64, 224, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(64, 224, 255, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: grid-move 30s linear infinite;
-}
-
-@keyframes grid-move {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(20px, 20px); }
-}
-
-.header-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
-.main-title {
-    position: relative;
-    margin: 0 0 1rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.title-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, rgba(64, 224, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: pulse-glow 4s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05); }
-}
-
-.title-icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px rgba(64, 224, 255, 0.6));
-    animation: rocket-float 3s ease-in-out infinite;
-}
-
-@keyframes rocket-float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-3px); }
-}
-
-.title-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    display: flex;
-    gap: 0.5rem;
-    align-items: baseline;
-}
-
-.text-gradient {
-    background: linear-gradient(135deg, #40e0ff 0%, #60a5fa 50%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-}
-
-.text-accent {
-    color: #40e0ff;
-    text-shadow: 0 0 20px rgba(64, 224, 255, 0.5);
-}
-
-.title-version {
-    position: relative;
-}
-
-.version-chip {
-    background: linear-gradient(135deg, rgba(64, 224, 255, 0.2) 0%, rgba(96, 165, 250, 0.2) 100%);
-    border: 1px solid rgba(64, 224, 255, 0.4);
-    border-radius: 20px;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #40e0ff;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(64, 224, 255, 0.2);
-}
-
-.subtitle-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.subtitle-line {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #40e0ff 50%, transparent 100%);
-}
-
-.subtitle {
-    margin: 0;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 300;
-    letter-spacing: 0.5px;
-}
-
-.tech-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(64, 224, 255, 0.3);
-    border: 1px solid rgba(64, 224, 255, 0.5);
-}
-
-.indicator.active {
-    background: #40e0ff;
-    box-shadow: 0 0 15px rgba(64, 224, 255, 0.8);
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        padding: 1.5rem 1rem;
-    }
-
-    .main-title {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .title-text {
-        font-size: 2rem;
-        flex-direction: column;
-        gap: 0.2rem;
-    }
-
-    .title-icon {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-        text-align: center;
-    }
-}
-
 :root {
     --gpt-academic-message-font-size: 15px;
 }
@@ -271,414 +93,9 @@
     background: #555;
 }
 
-/* ========== 功能区域优化样式 ========== */
-
-/* 基础功能区样式优化 */
-#basic-panel {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
-    border: 1px solid rgba(64, 224, 255, 0.2);
-    border-radius: 12px;
-    padding: 1rem;
-    backdrop-filter: blur(15px);
-    margin-top: 1rem;
-}
-
-/* 函数插件区样式优化 */
-#plugin-panel {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
-    border: 1px solid rgba(64, 224, 255, 0.2);
-    border-radius: 12px;
-    padding: 1rem;
-    backdrop-filter: blur(15px);
-    margin-top: 1rem;
-}
-
-/* 文件上传区域优化 */
-#elem_upload {
-    background: rgba(15, 23, 42, 0.6) !important;
-    border: 2px dashed rgba(64, 224, 255, 0.3) !important;
-    border-radius: 12px !important;
-    backdrop-filter: blur(10px) !important;
-    transition: all 0.3s ease !important;
-}
-
-#elem_upload:hover {
-    border-color: rgba(64, 224, 255, 0.6) !important;
-    background: rgba(15, 23, 42, 0.8) !important;
-    box-shadow: 0 4px 20px rgba(64, 224, 255, 0.1) !important;
-}
-
-/* 高级参数输入区优化 */
-#advance_arg_input_legacy {
-    background: rgba(15, 23, 42, 0.6) !important;
-    border: 1px solid rgba(64, 224, 255, 0.2) !important;
-    border-radius: 8px !important;
-    backdrop-filter: blur(10px) !important;
-}
-
-/* 暗色模式下的功能区域优化 */
-.dark #basic-panel,
-.dark #plugin-panel {
-    background: linear-gradient(135deg, rgba(5, 8, 16, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
-    border-color: rgba(64, 224, 255, 0.3);
-}
-
-.dark #elem_upload {
-    background: rgba(5, 8, 16, 0.8) !important;
-}
-
-.dark #elem_upload:hover {
-    background: rgba(5, 8, 16, 0.9) !important;
-}
-
-.dark #advance_arg_input_legacy {
-    background: rgba(5, 8, 16, 0.8) !important;
-}
-
-/* ========== 输入区优化样式 ========== */
-
-/* 输入区主容器 */
-#input-panel {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
-    border: 1px solid rgba(64, 224, 255, 0.3);
-    border-radius: 16px;
-    padding: 1.5rem;
-    backdrop-filter: blur(20px);
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* 添加动态边框发光效果 */
-#input-panel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 16px;
-    background: linear-gradient(45deg,
-        rgba(64, 224, 255, 0.1) 0%,
-        rgba(147, 197, 253, 0.1) 25%,
-        rgba(167, 139, 250, 0.1) 50%,
-        rgba(147, 197, 253, 0.1) 75%,
-        rgba(64, 224, 255, 0.1) 100%);
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
-    z-index: -1;
-}
-
-@keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* 输入框样式优化 */
-#user_input_main {
-    background: rgba(15, 23, 42, 0.6) !important;
-    border: 1px solid rgba(64, 224, 255, 0.2) !important;
-    border-radius: 12px !important;
-    padding: 1rem 1.2rem !important;
-    color: #e2e8f0 !important;
-    font-size: 15px !important;
-    line-height: 1.5 !important;
-    backdrop-filter: blur(10px) !important;
-    box-shadow:
-        inset 0 2px 4px rgba(0, 0, 0, 0.2),
-        0 0 0 0 rgba(64, 224, 255, 0) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    min-height: 48px !important;
-    resize: vertical !important;
-}
-
-/* 输入框聚焦状态 */
-#user_input_main:focus {
-    outline: none !important;
-    border-color: rgba(64, 224, 255, 0.6) !important;
-    box-shadow:
-        inset 0 2px 4px rgba(0, 0, 0, 0.2),
-        0 0 20px rgba(64, 224, 255, 0.2),
-        0 0 0 3px rgba(64, 224, 255, 0.1) !important;
-    background: rgba(15, 23, 42, 0.8) !important;
-}
-
-/* placeholder样式 */
-#user_input_main::placeholder {
-    color: rgba(148, 163, 184, 0.7) !important;
-    font-style: italic;
-}
-
-/* 提交按钮行优化 */
-#gpt-submit-row {
-    display: flex;
-    gap: 0 !important;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(64, 224, 255, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);
-    border: 1px solid rgba(64, 224, 255, 0.3);
-    padding: 2px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(64, 224, 255, 0.1);
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-    position: relative;
-    z-index: 1;
-}
-
-#gpt-submit-row:hover {
-    border-color: rgba(64, 224, 255, 0.5);
-    box-shadow: 0 6px 30px rgba(64, 224, 255, 0.2);
-    transform: translateY(-1px);
-}
-
-/* 主提交按钮样式 */
-#elem_submit_visible {
-    background: linear-gradient(135deg, #40e0ff 0%, #60a5fa 100%) !important;
-    border: none !important;
-    border-radius: 10px !important;
-    color: #0f172a !important;
-    font-weight: 600 !important;
-    font-size: 15px !important;
-    padding: 12px 24px !important;
-    box-shadow:
-        0 4px 15px rgba(64, 224, 255, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-    transition: all 0.2s ease !important;
-    position: relative;
-    overflow: hidden;
-    flex: 1 1 auto;
-    white-space: nowrap !important;
-    text-overflow: ellipsis !important;
-}
-
-#elem_submit_visible:hover {
-    background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%) !important;
-    box-shadow:
-        0 6px 25px rgba(64, 224, 255, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-    transform: translateY(-2px) !important;
-}
-
-#elem_submit_visible:active {
-    transform: translateY(0) !important;
-    box-shadow:
-        0 2px 10px rgba(64, 224, 255, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-}
-
-/* 下拉选择器样式 */
-#gpt-submit-dropdown {
-    background: linear-gradient(135deg, rgba(64, 224, 255, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%) !important;
-    border: none !important;
-    border-left: 1px solid rgba(64, 224, 255, 0.3) !important;
-    border-radius: 0 10px 10px 0 !important;
-    backdrop-filter: blur(10px);
-    max-width: 40px !important;
-    min-width: 40px !important;
-    position: relative;
-    z-index: 10;
-}
-
-/* 下拉菜单选项容器的z-index设置 */
-#gpt-submit-dropdown .svelte-1y5xaxi,
-#gpt-submit-dropdown .options,
-#gpt-submit-dropdown .dropdown-options,
-#gpt-submit-dropdown ul {
-    z-index: 9999 !important;
-    position: fixed !important;
-    background: rgba(15, 23, 42, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(64, 224, 255, 0.3) !important;
-    border-radius: 8px !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Gradio下拉菜单的通用z-index修复 */
-.gr-dropdown .options,
-.gr-dropdown .svelte-1y5xaxi,
-.svelte-1y5xaxi {
-    z-index: 9999 !important;
-    position: fixed !important;
-}
-
-/* 更全面的下拉菜单z-index修复 */
-#gpt-submit-dropdown .wrap,
-#gpt-submit-dropdown .wrap-inner,
-#gpt-submit-dropdown .secondary-wrap,
-#gpt-submit-dropdown .dropdown,
-.dropdown .options,
-.dropdown-content,
-.svelte-1ks7q5x,
-.svelte-aqlk7e {
-    z-index: 9999 !important;
-}
-
-/* 确保下拉菜单容器有正确的层级 */
-.dropdown-container,
-.options-container {
-    z-index: 9999 !important;
-    position: fixed !important;
-}
-
-/* 修复下拉菜单选项的样式 */
-#gpt-submit-dropdown ul.options li {
-    padding: 8px 16px !important;
-    color: #e2e8f0 !important;
-    background: transparent !important;
-    border-bottom: 1px solid rgba(64, 224, 255, 0.1) !important;
-    transition: all 0.2s ease !important;
-}
-
-#gpt-submit-dropdown ul.options li:hover {
-    background: rgba(64, 224, 255, 0.1) !important;
-    color: #40e0ff !important;
-}
-
-#gpt-submit-dropdown ul.options li:last-child {
-    border-bottom: none !important;
-}
-
-#gpt-submit-dropdown input {
-    pointer-events: none;
-    opacity: 0;
-    width: 0;
-    margin-inline: 0;
-    cursor: pointer;
-}
-
-#gpt-submit-dropdown label {
-    display: flex;
-    width: 0;
-}
-
-#gpt-submit-dropdown label div.wrap {
-    background: none;
-    box-shadow: none;
-    border: none;
-}
-
-#gpt-submit-dropdown label div.wrap div.wrap-inner {
-    background: none;
-    padding-inline: 0;
-    height: 100%;
-}
-
-#gpt-submit-dropdown svg.dropdown-arrow {
-    color: #40e0ff;
-    filter: drop-shadow(0 0 4px rgba(64, 224, 255, 0.3));
-    transform: scale(2) translate(4.5px, -0.3px);
-}
-
-#gpt-submit-dropdown > *:hover {
-    cursor: context-menu;
-}
-
-/* 控制按钮区域 */
-#input-panel .row:last-of-type {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    justify-content: flex-start;
-}
-
-/* 控制按钮样式优化 */
-#elem_reset, #elem_stop, #elem_clear {
-    background: rgba(30, 41, 59, 0.6) !important;
-    border: 1px solid rgba(148, 163, 184, 0.3) !important;
-    border-radius: 8px !important;
-    color: #94a3b8 !important;
-    font-size: 13px !important;
-    padding: 8px 16px !important;
-    backdrop-filter: blur(10px) !important;
-    transition: all 0.2s ease !important;
-    min-width: 70px !important;
-}
-
-#elem_reset:hover, #elem_stop:hover, #elem_clear:hover {
-    background: rgba(64, 224, 255, 0.1) !important;
-    border-color: rgba(64, 224, 255, 0.4) !important;
-    color: #40e0ff !important;
-    box-shadow: 0 4px 15px rgba(64, 224, 255, 0.15) !important;
-    transform: translateY(-1px) !important;
-}
-
-/* 状态提示区域 */
-#state-panel {
-    background: rgba(15, 23, 42, 0.4) !important;
-    border: 1px solid rgba(64, 224, 255, 0.2) !important;
-    border-radius: 8px !important;
-    padding: 0.75rem 1rem !important;
-    margin-top: 1rem !important;
-    backdrop-filter: blur(10px) !important;
-    color: rgba(148, 163, 184, 0.9) !important;
-    font-size: 13px !important;
-    text-align: center;
-}
-
-/* 音频输入区域优化 */
-#elem_audio {
-    background: rgba(15, 23, 42, 0.6) !important;
-    border: 1px solid rgba(64, 224, 255, 0.2) !important;
-    border-radius: 12px !important;
-    backdrop-filter: blur(10px) !important;
-    margin-top: 1rem !important;
-}
-
-/* 暗色模式下的输入区优化 */
-.dark #input-panel {
-    background: linear-gradient(135deg, rgba(5, 8, 16, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
-    border-color: rgba(64, 224, 255, 0.4);
-}
-
-.dark #user_input_main {
-    background: rgba(5, 8, 16, 0.8) !important;
-    color: #f1f5f9 !important;
-}
-
-.dark #user_input_main:focus {
-    background: rgba(5, 8, 16, 0.9) !important;
-}
-
-.dark #state-panel {
-    background: rgba(5, 8, 16, 0.6) !important;
-    color: rgba(203, 213, 225, 0.9) !important;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    #input-panel {
-        padding: 1rem;
-        border-radius: 12px;
-    }
-
-    #user_input_main {
-        padding: 0.875rem 1rem !important;
-        font-size: 14px !important;
-    }
-
-    #elem_submit_visible {
-        padding: 10px 20px !important;
-        font-size: 14px !important;
-    }
-
-    #input-panel .row:last-of-type {
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    #elem_reset, #elem_stop, #elem_clear {
-        min-width: 60px !important;
-        padding: 6px 12px !important;
-        font-size: 12px !important;
-    }
-}
-
 /* input btns: clear, reset, stop */
 #input-panel button {
-    min-width: 85%;
+    min-width: min(80px, 100%);
 }
 
 /* input btns: clear, reset, stop */
@@ -798,7 +215,65 @@
 }
 
 
-/* 注释: gpt-submit-row 样式已在上面的输入区优化中重新定义 */
+#gpt-submit-row {
+    display: flex;
+    gap: 0 !important;
+    border-radius: var(--button-large-radius);
+    border: var(--button-border-width) solid var(--button-primary-border-color);
+    /* background: var(--button-primary-background-fill); */
+    background: var(--button-primary-background-fill-hover);
+    color: var(--button-primary-text-color);
+    box-shadow: var(--button-shadow);
+    transition: var(--button-transition);
+    display: flex;
+}
+#gpt-submit-row:hover {
+    border-color: var(--button-primary-border-color-hover);
+    /* background: var(--button-primary-background-fill-hover); */
+    /* color: var(--button-primary-text-color-hover); */
+}
+#gpt-submit-row button#elem_submit_visible {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: none !important;
+    flex-grow: 1;
+}
+#gpt-submit-row #gpt-submit-dropdown {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: 0.5px solid #FFFFFF88 !important;
+    display: flex;
+    overflow: unset !important;
+    max-width: 40px !important;
+    min-width: 40px !important;
+}
+#gpt-submit-row #gpt-submit-dropdown input {
+    pointer-events: none;
+    opacity: 0; /* 隐藏输入框 */
+    width: 0;
+    margin-inline: 0;
+    cursor: pointer;
+}
+#gpt-submit-row #gpt-submit-dropdown label {
+    display: flex;
+    width: 0;
+}
+#gpt-submit-row #gpt-submit-dropdown label div.wrap {
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+#gpt-submit-row #gpt-submit-dropdown label div.wrap div.wrap-inner {
+    background: none;
+    padding-inline: 0;
+    height: 100%;
+}
+#gpt-submit-row #gpt-submit-dropdown svg.dropdown-arrow {
+    transform: scale(2) translate(4.5px, -0.3px);
+}
+#gpt-submit-row #gpt-submit-dropdown > *:hover {
+    cursor: context-menu;
+}
 
 .tooltip.svelte-p2nen8.svelte-p2nen8 {
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
